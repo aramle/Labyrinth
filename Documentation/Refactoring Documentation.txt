@@ -1,0 +1,5 @@
+1.	Redesigned the project structure:
+
+2.	Reformatted the source code:
+  - Removed all comments, because they were useless.
+3.	Renamed variables: 

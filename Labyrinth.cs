@@ -28,7 +28,7 @@ namespace EscapeFromLabyrinth
                 }
             }
             ll[3, 3] = 2;
-        }//end InitializeLabyrinth method
+        }
 
         public void ShowLabyrinth()
         {
@@ -53,7 +53,7 @@ namespace EscapeFromLabyrinth
                 }
                 Console.WriteLine();
             }
-        }//end ShowLabyrinth method
+        }
 
         public void ShowTopScores()
         {
@@ -72,7 +72,7 @@ namespace EscapeFromLabyrinth
 
                 Console.WriteLine("The scoreboard is empty.");
             }
-        }//end ShowTopScores method
+        }
         public void Move()
         {
             int steps = 0;
@@ -106,8 +106,8 @@ namespace EscapeFromLabyrinth
                             Console.WriteLine("Invalid command");
                             _continue = true;
                             break;
-                    }//end switch
-                }//end if
+                    }
+                }
                 else
                 {
 
@@ -234,11 +234,11 @@ namespace EscapeFromLabyrinth
                         default:
                             Console.WriteLine("Invalid move");
                             break;
-                    }//end switch
-                }//end else
-            }//end while
-        }//end Move method
-    }//end class Labyrinth
+                    }
+                }
+            }
+        }
+    }
 }
 
 
