@@ -3,3 +3,4 @@
 2.	Reformatted the source code:
   - Removed all comments, because they were useless.
 3.	Renamed variables: 
+  - Renamed i and j to row and col in InitializeLabyrinth().

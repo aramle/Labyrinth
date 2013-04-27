@@ -20,11 +20,12 @@ namespace EscapeFromLabyrinth
         public void InitializeLabyrinth()
         {
             Random random = new Random();
-            for (i = 0; i < 7; i++)
+            //TODO: Change hardcoded value 7
+            for (int row = 0; row < 7; row++)
             {
-                for (j = 0; j < 7; j++)
+                for (int col = 0; col < 7; col++)
                 {
-                    ll[i, j] = random.Next(2);
+                    ll[row, col] = random.Next(2);
                 }
             }
             ll[3, 3] = 2;
