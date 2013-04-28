@@ -7,12 +7,12 @@ namespace EscapeFromLabyrinth
 {
     public class Labyrinth
     {
-        private int[,] ll = new int[7, 7];
+        private const int GameFieldSize = 7;
+
+        private int[,] gameField = new int[GameFieldSize, GameFieldSize];
         private string enterMove = "Enter your move (L=left, R=right, U=up, D=down):";
         private string welcome = "Welcome to “Labirinth” game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.";
         private int i = 0, j = 0, m = 3, n = 3;
-
-
 
         private bool _continue = true;
         private string[] topScores = new string[5];
@@ -20,30 +20,29 @@ namespace EscapeFromLabyrinth
         public void InitializeLabyrinth()
         {
             Random random = new Random();
-            //TODO: Change hardcoded value 7
-            for (int row = 0; row < 7; row++)
+            for (int row = 0; row < GameFieldSize; row++)
             {
-                for (int col = 0; col < 7; col++)
+                for (int col = 0; col < GameFieldSize; col++)
                 {
-                    ll[row, col] = random.Next(2);
+                    gameField[row, col] = random.Next(2);
                 }
             }
-            ll[3, 3] = 2;
+            gameField[3, 3] = 2;
         }
 
         public void ShowLabyrinth()
         {
-            for (i = 0; i < 7; i++)
+            for (i = 0; i < GameFieldSize; i++)
             {
-                for (j = 0; j < 7; j++)
+                for (j = 0; j < GameFieldSize; j++)
                 {
-                    if (ll[i, j] == 0)
+                    if (gameField[i, j] == 0)
                     {
 
 
                         Console.Write("- ");
                     }
-                    else if (ll[i, j] == 2)
+                    else if (gameField[i, j] == 2)
                     {
                         Console.Write("* ");
                     }
@@ -115,10 +114,10 @@ namespace EscapeFromLabyrinth
                     switch (input)
                     {
                         case "L":
-                            if (ll[m, n - 1] == 0)
+                            if (gameField[m, n - 1] == 0)
                             {
-                                ll[m, n - 1] = 2;
-                                ll[m, n] = 0;
+                                gameField[m, n - 1] = 2;
+                                gameField[m, n] = 0;
                                 n -= 1;
                                 steps++;
                                 if (n - 1 < 0)
@@ -143,10 +142,10 @@ namespace EscapeFromLabyrinth
                             }
                             break;
                         case "R":
-                            if (ll[m, n + 1] == 0)
+                            if (gameField[m, n + 1] == 0)
                             {
-                                ll[m, n + 1] = 2;
-                                ll[m, n] = 0;
+                                gameField[m, n + 1] = 2;
+                                gameField[m, n] = 0;
                                 n += 1;
                                 steps++;
                                 if (n + 1 > 6)
@@ -174,10 +173,10 @@ namespace EscapeFromLabyrinth
                             }
                             break;
                         case "U":
-                            if (ll[m - 1, n] == 0)
+                            if (gameField[m - 1, n] == 0)
                             {
-                                ll[m - 1, n] = 2;
-                                ll[m, n] = 0;
+                                gameField[m - 1, n] = 2;
+                                gameField[m, n] = 0;
                                 m -= 1;
 
 
@@ -205,10 +204,10 @@ namespace EscapeFromLabyrinth
                             }
                             break;
                         case "D":
-                            if (ll[m + 1, n] == 0)
+                            if (gameField[m + 1, n] == 0)
                             {
-                                ll[m + 1, n] = 2;
-                                ll[m, n] = 0;
+                                gameField[m + 1, n] = 2;
+                                gameField[m, n] = 0;
                                 m += 1;
                                 steps++;
                                 if (m + 1 > 6)
