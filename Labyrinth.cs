@@ -1,22 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EscapeFromLabyrinth
 {
     public class Labyrinth
     {
+        //Fields
         private const int GameFieldSize = 7;
-
-        private int[,] gameField = new int[GameFieldSize, GameFieldSize];
+        private int[,] gameField;
         private string enterMove = "Enter your move (L=left, R=right, U=up, D=down):";
         private string welcome = "Welcome to “Labirinth” game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.";
-        private int i = 0, j = 0, m = 3, n = 3;
-
-        private bool _continue = true;
+        private int m = 3;
+        private int n = 3;
+        private bool playGame = true;
         private string[] topScores = new string[5];
 
+        //Constructors
+        public Labyrinth()
+        {
+            this.gameField = new int[GameFieldSize, GameFieldSize];
+        }
+
+        //Properties
+        //...
+
+        //Functions
         public void InitializeLabyrinth()
         {
             Random random = new Random();
@@ -32,14 +39,12 @@ namespace EscapeFromLabyrinth
 
         public void ShowLabyrinth()
         {
-            for (i = 0; i < GameFieldSize; i++)
+            for (int i = 0; i < GameFieldSize; i++)
             {
-                for (j = 0; j < GameFieldSize; j++)
+                for (int j = 0; j < GameFieldSize; j++)
                 {
                     if (gameField[i, j] == 0)
                     {
-
-
                         Console.Write("- ");
                     }
                     else if (gameField[i, j] == 2)
@@ -67,17 +72,15 @@ namespace EscapeFromLabyrinth
 
             if (topScores[0] == null && topScores[1] == null && topScores[2] == null && topScores[3] == null && topScores[4] == null)
             {
-
-
-
                 Console.WriteLine("The scoreboard is empty.");
             }
         }
+
         public void Move()
         {
             int steps = 0;
 
-            while (_continue == true)
+            while (playGame == true)
             {
                 Console.Write(enterMove);
                 string input = Console.ReadLine();
@@ -88,29 +91,28 @@ namespace EscapeFromLabyrinth
                     {
                         case "exit":
                             Console.WriteLine("Good Bye!");
-                            _continue = false;
+                            playGame = false;
                             break;
                         case "restart":
                             InitializeLabyrinth();
                             ShowLabyrinth();
-                            _continue = true;
+                            playGame = true;
                             m = 3;
                             n = 3;
                             Move();
                             break;
                         case "top":
                             ShowTopScores();
-                            _continue = true;
+                            playGame = true;
                             break;
                         default:
                             Console.WriteLine("Invalid command");
-                            _continue = true;
+                            playGame = true;
                             break;
                     }
                 }
                 else
                 {
-
                     switch (input)
                     {
                         case "L":
@@ -153,8 +155,6 @@ namespace EscapeFromLabyrinth
                                     Console.WriteLine("Congratulations! You escaped in {0} moves.", steps);
                                     InitializeLabyrinth();
 
-
-
                                     Console.WriteLine("\n" + welcome);
                                     Console.WriteLine(enterMove);
                                     ShowLabyrinth();
@@ -178,8 +178,6 @@ namespace EscapeFromLabyrinth
                                 gameField[m - 1, n] = 2;
                                 gameField[m, n] = 0;
                                 m -= 1;
-
-
 
                                 steps++;
                                 if (m - 1 < 0)
@@ -240,5 +238,3 @@ namespace EscapeFromLabyrinth
         }
     }
 }
-
-
