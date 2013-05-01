@@ -6,3 +6,10 @@
 3.	Renamed variables: 
   - Renamed i and j to row and col in InitializeLabyrinth().
   - Renamed array ll to gameField;
+
+Ivan:
+1. Removed unused usings
+2. Create GameFieldSize  constant
+3. Added access modifiers
+4. Removed instance of i and j and moved their initialization in for loops
+5. Renamed _continue to playGame
